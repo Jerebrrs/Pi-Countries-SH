@@ -40,7 +40,7 @@ function Detail(props) {
                         <div>
                             <div className={stylos.right}>
                                 <h2 className={stylos.name}>{detail.name}</h2>
-                                <h4  className={stylos.dat}>{detail.continents}</h4>
+                                <h4 className={stylos.dat}>{detail.continents}</h4>
                                 <h4 className={stylos.dat}>Code: {detail.id}</h4>
                                 <h4 className={stylos.dat}>Capital: {detail.capital}</h4>
                                 <h4 className={stylos.dat}>Region: {detail.subregion}</h4>
@@ -51,29 +51,36 @@ function Detail(props) {
                 ) : (<p>Loading ...</p>)}
             </div>
             <div className={stylos.titleCON}>
-              
-                <h3  className={stylos.title}>
-                    COUNTRY ACTIVITIES
-                </h3>
-                {Activities && Activities.length ? (
-                    Activities.map((e) => {
-                        return (<div >
-                            <h4 className={stylos.name}>{e.name}</h4>
-                            <p className={stylos.dat}>Dificulty: {e.dificulty}</p>
-                            <p className={stylos.dat}>Duration: {e.duration} hrs</p>
-                            <p className={stylos.dat}>Season: {e.season}</p>
-                        </div>)
-                    })
-                ) : (
-                    <p className={stylos.name}>No Activities yet</p>
-                )}
-                <button className={stylos.link}>
-                    <Link to="/create"> Crear Actividad</Link>
 
-                </button>
-            </div>
-        </div >
+                <div className={stylos.titleCON}>
+                    <h3 className={stylos.title}>COUNTRY ACTIVITIES</h3>
+                    {Activities && Activities.length ? (
+                        Activities.map((activity) => {
+                            console.log('Activity:',activity.season );
+                            const country = activity.Countries[0]; // Suponiendo que hay solo un país por actividad
+                            return (
+                                <div key={activity.id}>
+                                    <h4 className={stylos.name}>{activity.name}</h4>
+                                    <p className={stylos.dat}>Dificulty: {activity.dificulty}</p>
+                                    <p className={stylos.dat}>Duration: {activity.duration} hrs</p>
+                                    <p className={stylos.dat}>Season: {activity.season}</p>
+                                </div>
+                            );
+                        })
+                    ) : (
+                        <p className={stylos.name}>No Activities yet</p>
+                    )}
+                    <button className={stylos.link}>
+                        <Link to="/create"> Crear Actividad</Link>
 
+                    </button>
+                </div>
+            </div >
+
+
+
+
+        </div>
     )
 }
 

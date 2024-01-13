@@ -48,14 +48,14 @@ export default function reducer(state = initialState, { type, payload }) {
         case GET_ACTIVITY: {
             return {
                 ...state,
-                detail: [...payload],
-                activities: [...payload],
+              
+                Activities: payload,
             };
         }
         case POST_ACTIVITY: {
             return {
                 ...state,
-                activities: [...state.Activities, payload], //nuevo
+                Activities: [...state.Activities, payload], //nuevo
             }
         }
         case SET_PAGE_COUNTRIES: {
@@ -121,7 +121,7 @@ export default function reducer(state = initialState, { type, payload }) {
             };
         case FILTER_BY_ACTIVITY:
             const newState = { ...state };
-            newState.filters.activities = payload;
+            newState.filters.Activities = payload;
             const allCountriesAct = state.allCountries;
             let filteredActivities = [];
 

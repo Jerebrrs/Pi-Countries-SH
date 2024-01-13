@@ -26,10 +26,6 @@ export function validate(input) {
         error.season = "Select a season";
     }
 
-    // if (!input.countryId) {
-    //     error.countryId = "Select";
-
-    // }
     if (!input.countryId.length) {
         error.countryId = "Select at least one country";
     }
@@ -99,16 +95,21 @@ const createAc = () => {
 
         event.preventDefault();
         try {
-            dispatch(postActivities(input));
-            alert("Activity created!!!");
-            setInput({
-                name: "",
-                dificulty: "",
-                duration: "",
-                season: "",
-                countryId: [],
+            dispatch(postActivities(input)).then((response) => {
+                if (response) {
+                    alert("Activity created!!!");
+                    setInput({
+                        name: "",
+                        dificulty: "",
+                        duration: "",
+                        season: "",
+                        countryId: [],
+                    });
+                    navigate("/home");
+                } else {
+                    console.error("Error creating activity. Response:", response);
+                }
             });
-            navigate("/home");
         } catch (error) {
             console.error("Error creating activity:", error);
         }
@@ -129,9 +130,12 @@ const createAc = () => {
     return (
         <div className={stylos.body}>
 
-            <div className={stylos.lin}>
+            <div  >
                 <Link to="/home">
-                    <p className={stylos.link}>Regresar A Home</p>
+                    <button className={stylos.link}>
+                        HOME
+                    </button>
+                    {/* <p className={stylos.link}>HOME</p> */}
                 </Link>
             </div>
             <div className={stylos.container}>
@@ -156,18 +160,6 @@ const createAc = () => {
                                 </div>
                             </div>
                             <div>
-                                {/* <label>DIFICULTAD:</label>
-                                <br />
-                                <input
-                                    className={stylos.inp}
-                                    type='number'
-                                    value={input.dificulty}
-                                    name='dificulty'
-                                    onChange={(event) => handleChange(event)}
-                                />
-                                <div className={stylos.err2}>
-                                    {error.dificulty && <a>{error.dificulty}</a>}
-                                </div> */}
                                 <label>DIFFICULTY</label>
                                 <input
                                     className={stylos.inp}

@@ -61,6 +61,7 @@ export const getActivity = () => async (dispatch) => {
 
     } catch (error) {
         alert({ error: error.message });
+        throw error;
     }
 };
 
@@ -117,8 +118,23 @@ export function filterByActivity(payload) {
 //utilizo axios para utilizar el metodo post
 export function postActivities(payload) {
     return async function (dispatch) {
-        const data = await axios.post("http://localhost:3001/activities", payload);
-        return data;
+        try {
+            // Hacer la petición POST para crear la actividad
+            const response = await axios.post("http://localhost:3001/activities", payload);
+
+            // Despachar la acción GET_ACTIVITY para actualizar el estado con la nueva actividad
+            dispatch({
+                type: GET_ACTIVITY,
+                payload: response.data,
+            });
+
+            // Devolver la respuesta para que pueda ser utilizada si es necesario
+            return response.data;
+        } catch (error) {
+            console.error("Error creating activity:", error);
+            // Puedes manejar el error según tus necesidades, por ejemplo, lanzar una excepción
+            throw error;
+        }
     };
 };
 
