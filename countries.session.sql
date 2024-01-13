@@ -1,0 +1,2 @@
+SELECT * FROM "Activities";
+

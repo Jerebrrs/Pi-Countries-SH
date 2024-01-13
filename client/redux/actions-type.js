@@ -1,0 +1,14 @@
+export const GET_COUNTRIES = "GET_COUNTRIES";
+export const GET_BY_NAME = "GET_BY_NAME";
+export const GET_DETAILS = "GET_DETAILS";
+export const GET_ACTIVITY = "GET_ACTIVITY";
+
+export const SET_PAGE_COUNTRIES ="SET_PAGE_COUNTRIES";
+export const RESET = "RESET";
+export const RESET_COUNTRIES = "RESET_COUNTRIES";
+
+export const SORT_BY_NAME = "SORT_BY_NAME";
+export const SORT_BY_POPULATION = "SORT_BY_POPULATION";
+export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
+export const FILTER_BY_ACTIVITY = "FILTER_BY_ACTIVITY";
+export const POST_ACTIVITY = "POST_ACTIVITY";

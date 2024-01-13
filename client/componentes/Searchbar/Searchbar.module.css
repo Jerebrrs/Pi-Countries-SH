@@ -1,0 +1,41 @@
+.input {
+  background-color: rgba(218, 215, 173, 0.826);
+  width: 270px;
+  height: 40px;
+  border-radius: 10px;
+  padding-left: 15px;
+  font-size: 20px;
+  font-family: monospace;
+  text-decoration: none;
+  color: #000000;
+  font-weight: 600;
+  letter-spacing: 2px;
+  border: none;
+  text-transform: capitalize;
+  border: 3px solid #000000;
+}
+.input::placeholder {
+  font-size: 15px;
+  color: black; 
+}
+
+
+.boton {
+  background-color: rgba(0, 0, 0, 0.598);
+  border: none;
+  border-radius: 5px; /* Ajustado el radio del borde */
+  padding: 10px; /* Ajustado el relleno del botón */
+  font-size: 18px;
+  margin-left: 10px; /* Ajustado el margen izquierdo */
+  height: 40px; /* Ajustada la altura para que coincida con el campo de entrada */
+  color: #f8f5f5;
+}
+
+.boton:hover {
+  font-size: 20px;
+  cursor: pointer;
+}
+.searchBar {
+  display: flex;
+  align-items: center;
+}
