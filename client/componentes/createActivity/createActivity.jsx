@@ -5,39 +5,32 @@ import { postActivities, getCountries } from '../../redux/actions';
 import stylos from "../createActivity/createAct.module.css";
 
 export function validate(input) {
-    let error = {};
-    if (!input.name) {
-        error.name = "Required";
-    } else if (
-        !/^[a-zA-Z\s]*$/.test(input.name) || typeof input.name !== "string") {
-        error.name = "Only letters";
-    }
+    let error = [];
 
-    if (!input.dificulty) {
-        error.dificulty = "Select";
-    } else if (input.dificulty < 1 || input.dificulty > 5) error.dificulty = "Between 1 and 5";
+    if (!input.name) error.name = "Required";
+    else if (input.name.length > 20) error.name = "Only 20 letters";
+    else if (!/^[a-zA-Z\s]*$/.test(input.name) || typeof input.name !== "string") error.name = "Only letters";
+    if (namesActivities[input.name]) error.name = "Name in use";
 
-    if (!input.duration) {
-        error.duration = "Required";
-    } else if (input.duration < 1 || input.duration > 24)
+    if (!input.dificulty) error.dificulty = "Select";
+    else if (input.dificulty < 1 || input.dificulty > 5) error.dificulty = "Between 1 and 5";
+
+    if (!input.duration) error.duration = "Required";
+    else if (input.duration < 1 || input.duration > 24)
         error.duration = "Between 1 and 24";
 
-    if (!input.season) {
-        error.season = "Select a season";
-    }
+    if (!input.season) error.season = "Select";
 
-    if (!input.countryId.length) {
-        error.countryId = "Select at least one country";
-    }
     return error;
 }
 
-
+let namesActivities = [];
 
 const createAc = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const allCountries = useSelector((state) => state.allCountries);
+    const allActivities = useSelector((state) => state.Activities);
     const [error, setError] = useState({});
     // const [errorButton, setErrorButton] = useState(
     //   Object.values(error).length !== 0 ? true : false
@@ -54,12 +47,12 @@ const createAc = () => {
     function handleChange(event) {
         setInput({
             ...input,
-            [event.target.name]: event.target.value,
+            [event.target.name]: event.target.value.toUpperCase(),
         });
         setError(
             validate({
                 ...input,
-                [event.target.name]: event.target.value,
+                [event.target.name]: event.target.value.toUpperCase(),
             })
         );
     }
@@ -123,6 +116,12 @@ const createAc = () => {
     }
 
     useEffect(() => {
+        if (!namesActivities.length && allActivities.length)
+            allActivities.forEach((activity) => {
+                if (!namesActivities[activity.name]) {
+                    namesActivities[activity.name] = true;
+                }
+            });
         dispatch(getCountries());
     }, [dispatch]);
 

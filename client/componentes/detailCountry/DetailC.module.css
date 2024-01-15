@@ -1,24 +1,32 @@
-/* lik terminado */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../../portadas/mapaWorl.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  padding: 10px;
+  box-sizing: border-box;
+  background-repeat: repeat-y;
+  /* Repetir verticalmente */
+}
+
 .link {
   text-decoration: none;
   border: none;
   color: #ffffff;
   background-color: hsla(0, 0%, 0%, 0.955);
   height: 60px;
-  /* Ajusta la altura según tu preferencia */
-  width: 300px;
-  /* Ajusta el ancho según tu preferencia */
+  width: 200px;
   border-radius: 200px;
   transition: 0.9s;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: auto;
-  /* Centra horizontalmente */
-  margin-top: 10px;
-  /* Ajusta el margen superior según sea necesario */
+  margin-bottom: 20px;
   font-size: 20px;
-  /* Ajusta el tamaño de la fuente según tu preferencia */
 }
 
 .link:hover {
@@ -26,51 +34,11 @@
   color: #000000;
 }
 
-/* imagen terminada */
-.flagcontainer {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1%;
-  /* Ajusta según sea necesario */
-}
-
-.flag {
-  max-width: 20%;
-  /* Ajusta la anchura máxima según sea necesario */
-  height: 200;
-  width: 255px;
-  border-radius: 5%;
-  box-shadow: 16px 17px 24px -6px rgb(0, 0, 0);
-  -webkit-box-shadow: 16px 17px 24px -6px rgb(0, 0, 0);
-  -moz-box-shadow: 16px 17px 24px -6px rgb(0, 0, 0);
-}
-
-/* container */
-.container {
-  justify-content: space-around;
-  align-items: center;
-
-  border-color: red;
-  border: 3px;
-  background-image: url("../../portadas/mapaWorl.jpg");
-  padding: 5% 4%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  width: 92vw;
-  /* background-attachment: fixed; */
-  background-repeat: repeat;
-}
-
-/* titulo y marco */
 .titleCON {
-  border: solid rgb(0, 0, 0) 1px;
-  border-radius: 100px;
-  padding: 15px;
+  border-radius: 10px;
+  padding: 1px;
   margin-bottom: 20px;
-  /* Ajusta según sea necesario */
-  text-align: center;
-
+  align-items: center;
 }
 
 .title {
@@ -78,7 +46,42 @@
   color: #000000;
   font-size: xx-large;
   letter-spacing: 5px;
+  margin: 20px 0;
+}
 
+.flagcontainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.flag {
+  max-width: 20%;
+  height: 20;
+  width: 255px;
+  border-radius: 5%;
+  box-shadow: 16px 17px 24px -6px rgb(0, 0, 0);
+  -webkit-box-shadow: 16px 17px 24px -6px rgb(0, 0, 0);
+  -moz-box-shadow: 16px 17px 24px -6px rgb(0, 0, 0);
+}
+
+.containerACT {
+  display: flexbox;
+  justify-content: space-between;
+  align-items: center;
+  border-color: red;
+  border: 3px;
+  padding: 5% 4%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 92vw;
+}
+
+.countryDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .right {
@@ -86,23 +89,28 @@
   flex-direction: column;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.43);
-  /* Color de fondo con opacidad */
-  padding: 2px;
-  /* Espaciado interno */
-  border-radius: 10px;
-  /* Bordes redondeados */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  /* Sombra suave */
-  margin: 2px;
-  /* Margen externo */
+  padding: 20px;
+  border-radius: 100px;
+  margin: 20px;
   max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+.rightActivities {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.43);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  max-width: 400px;
+  border-radius: 100px;
+  justify-content: center; /* Alinea el contenido verticalmente en el centro */
+  text-align: center;
 }
 
 .name {
   font-family: monospace;
-  font-weight: 70;
+  font-weight: 700;
   text-transform: uppercase;
   color: #000000;
   font-size: 36px;
@@ -110,17 +118,6 @@
   min-height: 9px;
   text-shadow: 0px 6px 3px #585857;
 }
-
-/* .nameL {
-  font-family: monospace;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #000000;
-  font-size: 24px;
-  letter-spacing: 5px;
-  min-height: 95px;
-  text-shadow: 0px 6px 3px #585857;
-} */
 
 .dat {
   font-family: monospace;
@@ -130,17 +127,19 @@
   letter-spacing: 2px;
   text-align: justify;
 }
-
-
-.containerACT {
-  justify-content: space-around;
+.linkB{
+  text-decoration: none;
+  border: none;
+  color: #ffffff;
+  background-color: hsla(0, 0%, 0%, 0.955);
+  height: 100px;
+  width: 200px;
+  border-radius: 200px;
+  transition: 0.9s;
+  display: flex;
   align-items: center;
-  border-color: red;
-  border: 3px;
-  padding: 5% 4%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  width: 92vw;
-  background-image: url("../../portadas/mapaWorl.jpg");
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  margin-right: 10px;
 }

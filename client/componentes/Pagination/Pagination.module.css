@@ -33,13 +33,13 @@
 }
 
 .pagination .items .diferents:hover {
-  background-color: rgb(88, 87, 73);
+  background-color: rgba(0, 0, 0, 0.811);
   color: whitesmoke;
 }
 
 .current {
-  background-color: rgb(245, 245, 242);
-  color: rgb(7, 7, 7);
+  background-color: #000000ce;
+  color: rgb(255, 255, 255);
 
 
   padding: 6px 8px;
@@ -48,7 +48,7 @@
   border-radius: 8px;
 
   margin-bottom: 5px;
-  border: 0px solid rgb(149 148 134);
+  border: 0px solid rgb(255, 255, 255);
   font-weight: 700;
 
   font-size: 20px;
@@ -64,7 +64,7 @@
   min-width: 32px;
   min-height: 18px;
   border-radius: 8px;
-  background-color: rgba(90, 88, 88, 0);
+  background-color: #000000b0;
   margin-bottom: 5px;
   border: 1px solid rgba(149, 148, 134, 0);
   font-weight: 700;

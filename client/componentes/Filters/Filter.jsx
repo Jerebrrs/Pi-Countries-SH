@@ -14,16 +14,19 @@ function Filter() {
     const dispatch = useDispatch();
     const activities = useSelector((state) => state.activities);
 
+
+
     useEffect(() => {
-        if (!activities) dispatch(getActivity());
+        if (!activities || activities.length === 0) {
+            dispatch(getActivity());
+        }
     }, [activities, dispatch]);
-
-
     function handleFilterByContinent(event) {
         dispatch(filterByContinent(event.target.value));
     }
     function handleFilterByActivity(event) {
         dispatch(filterByActivity(event.target.value));
+        console.log(filterByActivity(event.target.value))
     }
 
     function handleSortByName(event) {
@@ -56,17 +59,17 @@ function Filter() {
                             <option value="Oceania">Oceania</option>
                         </select>
                         <select className={stylos.filters}
+
                             onChange={(event) => handleFilterByActivity(event)}>
 
-                            <option value="All">All Activities</option>
-                            <option value="Winter">Winter</option>
-                            <option value="Spring">Spring</option>
-                            <option value="Fall">Fall</option>
-                            <option value="Summer">Summer</option>
+                             <option value="All">All Activities</option>
+                            <option value="All">Country Activities</option>
                         
+                          
                         </select>
+                      
                         <select className={stylos.filters}
-                        onChange={(event)=> handlesortByPopulation(event)}
+                            onChange={(event) => handlesortByPopulation(event)}
                         >
                             <option> Order by population </option>
                             <option value="asc"> Ascendente </option>

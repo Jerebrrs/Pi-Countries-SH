@@ -19,6 +19,7 @@ const initialState = {
     allCountries: [],
     details: [],
     Activities: [],
+
     filters: { activities: "All", continents: "All" },
 };
 
@@ -48,8 +49,8 @@ export default function reducer(state = initialState, { type, payload }) {
         case GET_ACTIVITY: {
             return {
                 ...state,
-              
                 Activities: payload,
+
             };
         }
         case POST_ACTIVITY: {
@@ -110,43 +111,52 @@ export default function reducer(state = initialState, { type, payload }) {
         case FILTER_BY_CONTINENT:
             state.filters.continents = payload; //actualiza el estado del filtro para utilizar en activity
             const allCountries = state.allCountries;
-            const continentFilter = payload === "All"
-                ? allCountries
-                : allCountries.filter(
-                    (country) => country.continents === payload
-                );
+            // const continentFilter = payload === "All"
+            //     ? allCountries
+            //     : allCountries.filter(
+            //         (country) => country.continents === payload
+            //     );
+            let filteredContinents = state.allCountries;
+            if (state.filters.activities !== "All") {
+                filteredContinents = filteredContinents.filter((event) => event.Activities.some((country) => country.name === state.filters.activities));
+            }
+            if (payload !== "All") {
+                filteredContinents = filteredContinents.filter((country) => country.continents === payload);
+            }
             return {
                 ...state,
-                countries: [...continentFilter],
+                countries: [...filteredContinents],
             };
         case FILTER_BY_ACTIVITY:
-            const newState = { ...state };
-            newState.filters.Activities = payload;
-            const allCountriesAct = state.allCountries;
+
+            state.filters.activities = payload; //actualiza el estado del filtro para utilizar en activity
+            const allCountriesActivities = state.allCountries;
             let filteredActivities = [];
 
             if (payload === "All") {
-                filteredActivities = allCountriesAct.filter((country) =>
-
+                filteredActivities = allCountriesActivities.filter((country) =>
                     country.Activities[0]?.name
                         ? country.Activities[0]
                         : false
                 );
-
             } else {
-                filteredActivities = allCountriesAct.filter((event) =>     // // Filtra los países que tienen actividades turísticas con el nombre especificado en payload.
-                    event.Activities.some((country) => country.name === payload)
+                filteredActivities = allCountriesActivities.filter((event) =>
+                    event.Activities.some(
+                        (country) => country.name === payload && country.season === state.filters.season
+                    )
                 );
             }
-            if (state.filters.continents !== "All") {   // Si el filtro de continentes no es "All", filtra los países por continente.
-                filteredActivities = filteredActivities.filter((country) => country.continents === state.filters.continents);
+            if (state.filters.continents !== "All") {
+                filteredActivities = filteredActivities.filter(
+                    (country) => country.continents === state.filters.continents
+                );
             }
-            // return {
-            //     ...state,
-            //     countries: [...filteredActivities],
-            // }
-            newState.countries = [...filteredActivities]; // Actualiza la propiedad countries con el nuevo resultado
-            return newState;
+
+            return {
+                ...state,
+                countries: [...filteredActivities],
+            };
+
         default:
             return { ...state };
     }
