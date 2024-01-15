@@ -17,7 +17,7 @@ activitiesRouter.post("/", async (req, res) => {
     let { name, dificulty, duration, season, countryId } = req.body;
 
     try {
-        let activityCreate = createActivity(name, dificulty, duration, season, countryId);
+        let activityCreate = await createActivity(name, dificulty, duration, season, countryId);
         res.status(200).json(activityCreate)
     } catch (error) {
         res.status(400).json({ error: error.message });

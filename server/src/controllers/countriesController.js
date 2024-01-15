@@ -7,7 +7,8 @@ const getAllCountries = async () => {
             {
                 model: Activities,
                 attributes: ["name", "dificulty", "duration", "season"],
-                through: { attributes: [] },
+                through: { 
+                    attributes: [] },
             },
         ], //UNIMOS LA TABLA ACTIVITYES
     })
