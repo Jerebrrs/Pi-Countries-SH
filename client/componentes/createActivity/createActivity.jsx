@@ -188,10 +188,11 @@ const createAc = () => {
                                 <div>
                                     <select
                                         className={stylos.inp}
+                                        name='season'
+                                        type="number"
                                         onChange={(event) => handleCheck(event)}
-                                        value={input.season}
                                     >
-
+                                     
                                         <option value="" hidden >
                                             Select season
                                         </option>

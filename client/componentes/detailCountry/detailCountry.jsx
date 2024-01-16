@@ -7,7 +7,7 @@ import stylos from "../detailCountry/DetailC.module.css";
 
 function Detail(props) {
     const { id } = useParams();
-    // const countryDetail = useSelector((state) => state.activities)
+
     const { detail, Activities } = useSelector((state) => state);
     const dispatch = useDispatch();
 
@@ -23,14 +23,14 @@ function Detail(props) {
                 <Link to="/home">
                     <p className={stylos.link}>HOME</p>
                 </Link>
-                
+
             </div>
             <div className={stylos.titleCON}>
                 <h2 className={stylos.title} >
                     COUNTRY DETAILS
                 </h2>
             </div>
-            <div  className={stylos.countryDetails}>
+            <div className={stylos.countryDetails}>
                 <div >
 
                     {detail ? (
@@ -63,25 +63,32 @@ function Detail(props) {
                         <h3 className={stylos.title}>COUNTRY ACTIVITIES</h3>
                         {Activities && Activities.length ? (
                             Activities.map((activity) => {
+                                // Filtrar actividades por el ID del país del detalle
+                                const countryIdsInActivity = activity.Countries.map((country) => country.id);
 
-                                return (
-                                    <div key={activity.id}>
-                                        <h4 className={stylos.name}>{activity.name}</h4>
-                                        <p className={stylos.dat}>Dificulty: {activity.dificulty}</p>
-                                        <p className={stylos.dat}>Duration: {activity.duration} hrs</p>
-                                        <p className={stylos.dat}>Season: {activity.season}</p>
-                                    </div>
-                                );
+                                if (countryIdsInActivity.includes(id) && countryIdsInActivity.length === 1) {
+
+                                    return (
+                                        <div key={activity.id}>
+                                            <h4 className={stylos.name}>{activity.name}</h4>
+                                            <p className={stylos.dat}>ID: {activity.id}</p>
+                                            <p className={stylos.dat}>Dificulty: {activity.dificulty}</p>
+                                            <p className={stylos.dat}>Duration: {activity.duration} hrs</p>
+                                            <p className={stylos.dat}>Season: {activity.season}</p>
+                                        </div>
+                                    );
+                                }
+                                return null; // Omitir actividades de otros países o múltiples actividades en diferentes países
                             })
                         ) : (
                             <p className={stylos.name}>No Activities yet</p>
                         )}
-                       
+
                     </div>
                     <button className={stylos.linkB}>
-                            <Link to="/create"> Crear Actividad</Link>
+                        <Link to="/create"> Crear Actividad</Link>
 
-                        </button>
+                    </button>
                 </div >
 
             </div>

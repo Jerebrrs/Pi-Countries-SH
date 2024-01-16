@@ -11,6 +11,7 @@ import {
     FILTER_BY_ACTIVITY,
     SET_PAGE_COUNTRIES,
     POST_ACTIVITY,
+   
 } from "./actions-type";
 import axios from "axios";
 
@@ -84,7 +85,6 @@ export function resetCountries(payload) {
         payload: payload,
     };
 };
-
 
 export const sortByName = (payload) => {
     return {

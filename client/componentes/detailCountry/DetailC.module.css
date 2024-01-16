@@ -10,7 +10,6 @@
   padding: 10px;
   box-sizing: border-box;
   background-repeat: repeat-y;
-  /* Repetir verticalmente */
 }
 
 .link {
@@ -101,12 +100,12 @@
   align-items: center;
   background-color: rgba(255, 255, 255, 0.43);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  margin: 20px;
-  max-width: 400px;
-  border-radius: 100px;
-  justify-content: center; /* Alinea el contenido verticalmente en el centro */
   text-align: center;
-}
+  padding: 20px;
+  border-radius: 100px;
+  margin: 20px;
+  max-width: 400px; 
+} 
 
 .name {
   font-family: monospace;
@@ -126,6 +125,7 @@
   font-size: 20px;
   letter-spacing: 2px;
   text-align: justify;
+  text-align: center;
 }
 .linkB{
   text-decoration: none;

@@ -19,7 +19,6 @@ const initialState = {
     allCountries: [],
     details: [],
     Activities: [],
-
     filters: { activities: "All", continents: "All" },
 };
 
@@ -156,7 +155,7 @@ export default function reducer(state = initialState, { type, payload }) {
                 ...state,
                 countries: [...filteredActivities],
             };
-
+       
         default:
             return { ...state };
     }

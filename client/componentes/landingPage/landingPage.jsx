@@ -1,5 +1,5 @@
 import React from 'react'
-import landingImg from "../../portadas/mapaWorl.jpg";
+import planeta from "../../portadas/mundoCA.png";
 import styles from "./landingpage.module.css";
 import { Link } from "react-router-dom";
 const LandingPage = () => {
@@ -7,7 +7,9 @@ const LandingPage = () => {
         <div className={styles.container}>
             {/* <img className={styles.img} src={landingImg} alt="" /> */}
             <div className={styles.right}>
-
+                <div >
+                <img className={styles.img}  src={planeta} alt="planeta" />
+                </div>
                 <div className={styles}>
                     <h1 className={styles.title}> Bienvenidos a Country</h1>
                     <h2 className={styles.subtitle}>La App con todos los Paises</h2>
