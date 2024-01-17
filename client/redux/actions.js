@@ -3,8 +3,6 @@ import {
     GET_BY_NAME,
     GET_DETAILS,
     GET_ACTIVITY,
-    RESET,
-    RESET_COUNTRIES,
     SORT_BY_NAME,
     SORT_BY_POPULATION,
     FILTER_BY_CONTINENT,
@@ -15,7 +13,7 @@ import {
 } from "./actions-type";
 import axios from "axios";
 
-export const getCountries = () => async (dispatch) => {
+export const getCountries = () => async (dispatch) => {                                          //obtenemos lista de paises
     try {
         const infoC = await axios.get('http://localhost:3001/countries');
         return dispatch({
@@ -29,7 +27,7 @@ export const getCountries = () => async (dispatch) => {
 
 export const getCountriesName = (name) => async (dispatch) => {
     try {
-        const infoName = await axios.get(`http://localhost:3001/countries/?name=${name}`);//.charAt(0).toUpperCase() + name.slice(1)
+        const infoName = await axios.get(`http://localhost:3001/countries/?name=${name}`);     //obt paises que coinciden con name
         return dispatch({
             type: GET_BY_NAME,
             payload: infoName.data,
@@ -37,9 +35,10 @@ export const getCountriesName = (name) => async (dispatch) => {
     } catch (error) {
         alert(error.message);
     }
+    
 };
 
-export const getCountriesDetail = (id) => async (dispatch) => {
+export const getCountriesDetail = (id) => async (dispatch) => {                               //obtenrmos el detail del pais
     try {
         let detail = await axios.get(`http://localhost:3001/countries/${id}`);
         return dispatch({
@@ -52,7 +51,7 @@ export const getCountriesDetail = (id) => async (dispatch) => {
     }
 }
 
-export const getActivity = () => async (dispatch) => {
+export const getActivity = () => async (dispatch) => {                                    //obtenemos la lista de actividades
     try {
         const activity = await axios.get(`http://localhost:3001/activities`);
         return dispatch({
@@ -66,23 +65,10 @@ export const getActivity = () => async (dispatch) => {
     }
 };
 
-export const setPageCountries = (start, end) => {
+export const setPageCountries = (start, end) => {                                       
     return {
         type: SET_PAGE_COUNTRIES,
         payload: { start, end },
-    };
-};
-
-export function resetState() {
-    return {
-        type: RESET,
-    };
-};
-
-export function resetCountries(payload) {
-    return {
-        type: RESET_COUNTRIES,
-        payload: payload,
     };
 };
 

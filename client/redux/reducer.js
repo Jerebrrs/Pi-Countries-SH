@@ -3,8 +3,6 @@ import {
     GET_BY_NAME,
     GET_DETAILS,
     GET_ACTIVITY,
-    // RESET,
-    // RESET_COUNTRIES,
     SORT_BY_NAME,
     SORT_BY_POPULATION,
     FILTER_BY_CONTINENT,
@@ -66,18 +64,6 @@ export default function reducer(state = initialState, { type, payload }) {
                 ],
             };
         }
-        // case RESET: {
-        //     return {
-        //         ...state,
-        //         detail: [],
-        //     };
-        // }
-        // case RESET_COUNTRIES: {
-        //     return {
-        //         ...state,
-        //         countries: payload,
-        //     };
-        // }
         case SORT_BY_NAME:
             const sortCountriesName = payload === "asc"
                 ? state.countries.sort((a, b) => a.name.localeCompare(b.name))

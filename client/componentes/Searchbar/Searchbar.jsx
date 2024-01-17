@@ -6,11 +6,13 @@ import { getCountriesName } from "../../redux/actions";
 const Searchbar = () => {
     const dispatch = useDispatch();
     const [name, setName] = useState("");
+    const [error, setError] = useState('');
 
     function handleChange(event) {
         setName(event.target.value);
     };
 
+    
     function handleSubmit(event) {
         event.preventDefault();
         dispatch(getCountriesName(name));
@@ -19,20 +21,22 @@ const Searchbar = () => {
 
     return (
         <div>
-             <form className={stylos.searchBar} onSubmit={(event) => handleSubmit(event)}>
-            <input 
-            className={stylos.input}
-             type='text' 
-             placeholder='Search...' 
-             onChange={(event) => handleChange(event)
-            }
-              />
-            <button
-             className={stylos.boton}
-                type='submit'
-                onClick={(event) => handleSubmit(event)}>
-                🔍︎
-            </button>
+            <form className={stylos.searchBar} onSubmit={(event) => handleSubmit(event)}>
+                <input
+                    className={stylos.input}
+                    type='text'
+                    placeholder='Search...'
+                    value={name}
+                    onChange={(event) => handleChange(event)
+                    }
+                  
+                />
+                <button
+                    className={stylos.boton}
+                    type='submit'
+                    onClick={(event) => handleSubmit(event)}>
+                    🔍︎
+                </button>
             </form>
         </div>
     )

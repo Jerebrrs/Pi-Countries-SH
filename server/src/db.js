@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
 
-const fs = require('fs');
+const fs = require('fs');    //SISITEMA DE RUTAS Y ARCHIVOS
 const path = require('path');
 const {
   DB_USER, DB_PASSWORD, DB_HOST,
@@ -36,8 +36,8 @@ const { Country, Activities} = sequelize.models;
 // Product.hasMany(Reviews);
 
 
-Country.belongsToMany(Activities, {through: 'Country_activiti', timestamps: false})
-Activities.belongsToMany(Country, {through: 'Country_activiti', timestamps: false})
+Country.belongsToMany(Activities, {through: 'Country_activiti', timestamps: false})//BELONSTOMANY ESTABLECE LA ASOCIACIOM 
+Activities.belongsToMany(Country, {through: 'Country_activiti', timestamps: false})//TIMESTAM DESACTIVA LA TABLA INTERMEDIA
 //Sequelize no creará automáticamente los campos de marca de tiempo createdAt y updatedAt en la tabla intermedia. 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

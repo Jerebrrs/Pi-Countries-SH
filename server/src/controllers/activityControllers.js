@@ -4,7 +4,6 @@ const { Activities, Country } = require("../db");
 const getAllActivity = async () => {
   const allActivity = await Activities.findAll({    //consultamos las activ en la bd
     include: Country,
-    // attributes: ['name'], // Incluye la inf de los países asoc a cada actividad
   });
   if (!allActivity.length) {
     console.error("No hay actividades turísticas disponibles");
@@ -20,7 +19,7 @@ const createActivity = async (
   countryId
 ) => {
   if (!name || !dificulty || !duration || !season || !countryId)
-    throw Error("Mandatory data is missing");
+     console.error("Faltan datos Obligatorios");
 
   const newActivity = await Activities.create({
     name,
@@ -39,5 +38,51 @@ const createActivity = async (
 
   return newActivity;
 };
+// const getAllActivity = () => {
+//   return new Promise(async (resolve, reject) => {
+//     try {
+//       const allActivity = await Activities.findAll({
+//         include: Country,
+//       });
+//       if (!allActivity.length) {
+//         console.error("no hay actividades")
+//       }
+//       resolve(allActivity);
+//     } catch (error) {
+//       reject(error);
+//     }
+//   });
+// };
+
+// const createActivity = (name, dificulty, duration, season, countryId) => {
+//   return new Promise(async (resolve, reject) => {
+//     if (!name || !dificulty || !duration || !season || !countryId)
+//       reject("Faltan datos Obligatorios");
+
+//     try {
+//       const newActivity = await Activities.create({
+//         name,
+//         dificulty,
+//         duration,
+//         season,
+//       });
+
+//       const pushActivity = await Country.findAll({
+//         where: {
+//           id: countryId,
+//         },
+//       });
+
+//       await newActivity.addCountry(pushActivity);
+
+//       resolve(newActivity);
+//     } catch (error) {
+//       reject(error);
+//     }
+//   });
+// };
+
+
+
 
 module.exports = { getAllActivity, createActivity };

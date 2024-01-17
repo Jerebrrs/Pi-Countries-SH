@@ -32,11 +32,13 @@ const Cards = ({ pageCountries, allCountries, getCountries }) => {
     );
 };
 
+// Mapeamos el estado Redux a las propiedades del componente
 const mapStateToProps = (state) => ({
     pageCountries: state.pageCountries,
     allCountries: state.allCountries,
 });
 
+// Mapea las acciones Redux a las propiedades del componente
 const mapDispatchToProps = (dispatch) => ({
     getCountries: () => dispatch(getCountries()),
     getActivity: () => dispatch(getActivity()),

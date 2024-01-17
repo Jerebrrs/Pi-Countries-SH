@@ -15,22 +15,20 @@ const Pagination = ({ countries, setPageCountries }) => { //recibo paises
         }
     };
 
-    let pages = Math.ceil(country.length / countryPerPage);
+    let pages = Math.ceil(country.length / countryPerPage); //calculamos el n de paginas y hacemos una lista 
 
     const buttons = [];        //calculamos el n de paginas y hacemos una lista 
     for (let i = 1; i <= pages; i++) {
         buttons.push(i);
     }
+
     //pagina anterior/siguiente
+
     const handlePrev = () => {
-        currentPage === 1
-            ? SetCurrentPage(currentPage)
-            : SetCurrentPage(currentPage - 1);
+        SetCurrentPage((prev) => (prev > 1 ? prev - 1 : prev));
     };
     const handleNext = () => {
-        currentPage === buttons.length
-            ? SetCurrentPage(currentPage)
-            : SetCurrentPage(currentPage + 1);
+        SetCurrentPage((prev) => (prev <buttons.length  ? prev + 1 : prev));
     };
 
     const start = () => {
@@ -42,6 +40,7 @@ const Pagination = ({ countries, setPageCountries }) => { //recibo paises
     };
 
     const [arrButons, setarrButons] = useState([]);
+
     useEffect(() => {
         if (country.length !== countries.length) Setcountry(countries);
         let templateButtons = [...arrButons];
@@ -82,7 +81,7 @@ const Pagination = ({ countries, setPageCountries }) => { //recibo paises
                             ❮
                         </a>
                     </li >
-                    {arrButons.map((data, index) => {
+                    {buttons.map((data, index) => {
                         return (
                             <li key={index} className={`${stylos.items}`}>
                                 <a className={`${currentPage === data ? stylos.current : stylos.diferents}`} onClick={() => SetCurrentPage(data)} >
