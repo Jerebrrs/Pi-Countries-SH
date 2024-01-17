@@ -6,7 +6,7 @@ import { getCountriesName } from "../../redux/actions";
 const Searchbar = () => {
     const dispatch = useDispatch();
     const [name, setName] = useState("");
-    const [error, setError] = useState('');
+   
 
     function handleChange(event) {
         setName(event.target.value);
@@ -14,6 +14,7 @@ const Searchbar = () => {
 
     
     function handleSubmit(event) {
+        console.log(event)
         event.preventDefault();
         dispatch(getCountriesName(name));
         setName("")

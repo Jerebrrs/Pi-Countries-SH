@@ -16,11 +16,12 @@ function Filter() {
 
 
 
-    useEffect(() => {
+    useEffect(() => {   //EE GLOBAL
         if (!activities || activities.length === 0) {
             dispatch(getActivity());
         }
     }, [activities, dispatch]);
+    
     function handleFilterByContinent(event) {
         dispatch(filterByContinent(event.target.value));
     }
